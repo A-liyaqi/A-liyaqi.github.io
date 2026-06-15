@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美味寿司 - 美食店铺</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* 头部横幅 */
+        .banner {
+            width: 100%;
+            height: 400px;
+            background: #333 url("https://img0.baidu.com/it/u=1802720231,3022339239&fm=253&fmt=auto&app=138&f=JPEG") center/cover no-repeat;
+            color: #fff;
+            padding: 80px 5%;
+        }
+        .banner h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        .banner p {
+            font-size: 16px;
+            max-width: 400px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #222;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #ffc845;
+            color: #222;
+        }
+
+        /* 热门菜品 */
+        .menu {
+            background: #2b2b3b;
+            color: #fff;
+            padding: 60px 5%;
+            text-align: center;
+        }
+        .menu h2 {
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+        .menu-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .menu-item {
+            width: 30%;
+            min-width: 220px;
+        }
+        .menu-item img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .menu-item p {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        /* 店铺介绍 */
+        .about {
+            background: #ffd166;
+            padding: 60px 5%;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .about-img {
+            width: 40%;
+            min-width: 280px;
+            border-radius: 50%;
+        }
+        .about-text {
+            flex: 1;
+            min-width: 280px;
+        }
+        .about-text h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        /* 数据统计 */
+        .data {
+            background: #2b2b3b;
+            color: #fff;
+            padding: 60px 5%;
+            text-align: center;
+        }
+        .data h2 {
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+        .data-box {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .data-item {
+            width: 80px;
+            height: 80px;
+            background: #3a3a4a;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .data-item span:first-child {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .data-item span:last-child {
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        /* 特色美食 */
+        .food {
+            background: #ffd166;
+            padding: 60px 5%;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .food-text {
+            flex: 1;
+            min-width: 280px;
+        }
+        .food-text h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .food-text p {
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        .food-img {
+            width: 40%;
+            min-width: 280px;
+            border-radius: 50%;
+        }
+
+        /* 顾客评价 */
+        .comment {
+            background: #2b2b3b;
+            color: #fff;
+            padding: 60px 5%;
+            text-align: center;
+        }
+        .comment h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+        .comment-head {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+        .comment p {
+            max-width: 500px;
+            margin: 0 auto 15px;
+            line-height: 1.8;
+        }
+        .name {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* 订阅区域 */
+        .subscribe {
+            background: #ffd166;
+            padding: 60px 5%;
+            text-align: center;
+        }
+        .subscribe h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .subscribe p {
+            margin-bottom: 25px;
+        }
+        .subscribe input {
+            padding: 10px 15px;
+            width: 260px;
+            border: none;
+            outline: none;
+            border-radius: 4px 0 0 4px;
+        }
+        .subscribe button {
+            padding: 10px 20px;
+            background: #222;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* 页脚 */
+        footer {
+            background: #222;
+            color: #ccc;
+            padding: 50px 5%;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .footer-item h3 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        .footer-item ul {
+            list-style: none;
+        }
+        .footer-item li {
+            margin: 8px 0;
+        }
+        .footer-item a {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部横幅 -->
+    <div class="banner">
+        <h1>匠心寿司</h1>
+        <p>精选新鲜食材，传承日式料理工艺，每一份寿司都用心制作，带给你舌尖上的极致美味。</p>
+        <a href="#" class="btn">了解更多</a>
+    </div>
+
+    <!-- 热门菜品 -->
+    <div class="menu">
+        <h2>人气菜品</h2>
+        <div class="menu-list">
+            <div class="menu-item">
+                <img src="https://img2.baidu.com/it/u=2679292632,17811393238&fm=253&fmt=auto&app=138&f=JPEG" alt="寿司">
+                <p>经典三文鱼寿司</p>
+            </div>
+            <div class="menu-item">
+                <img src="https://img2.baidu.com/it/u=2679292632,17811393238&fm=253&fmt=auto&app=138&f=JPEG" alt="寿司">
+                <p>鲜虾手握寿司</p>
+            </div>
+            <div class="menu-item">
+                <img src="https://img2.baidu.com/it/u=2679292632,17811393238&fm=253&fmt=auto&app=138&f=JPEG" alt="寿司">
+                <p>综合寿司拼盘</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 店铺介绍 -->
+    <div class="about">
+        <img src="https://img0.baidu.com/it/u=1802720231,3022339239&fm=253&fmt=auto&app=138&f=JPEG" class="about-img" alt="店铺">
+        <div class="about-text">
+            <h2>关于我们</h2>
+            <p>本店专注日式寿司多年，坚持每日采购新鲜海鲜与食材，拒绝预制食材。纯手工制作，保留食材本身的鲜香，打造地道日式风味。</p>
+            <a href="#" class="btn">查看详情</a>
+        </div>
+    </div>
+
+    <!-- 数据统计 -->
+    <div class="data">
+        <h2>店铺数据</h2>
+        <div class="data-box">
+            <div class="data-item">
+                <span>12</span>
+                <span>门店</span>
+            </div>
+            <div class="data-item">
+                <span>36</span>
+                <span>菜品</span>
+            </div>
+            <div class="data-item">
+                <span>28</span>
+                <span>主厨</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 特色美食 -->
+    <div class="food">
+        <div class="food-text">
+            <h2>特色美食</h2>
+            <p>多款创意寿司结合大众口味改良，既有传统日式风味，也有创新混搭口感，满足不同食客的味蕾需求。</p>
+            <a href="#" class="btn">立即选购</a>
+        </div>
+        <img src="https://img2.baidu.com/it/u=2679292632,17811393238&fm=253&fmt=auto&app=138&f=JPEG" class="food-img" alt="美食">
+    </div>
+
+    <!-- 顾客评价 -->
+    <div class="comment">
+        <h2>顾客评价</h2>
+        <img class="comment-head" src="https://img1.baidu.com/it/u=3978063311,2879306332&fm=253&fmt=auto&app=138&f=JPEG" alt="头像">
+        <p>食材特别新鲜，寿司口感软糯，环境舒适，是日常聚餐、打卡的好选择，已经多次回购啦！</p>
+        <p class="name">—— 美食爱好者</p>
+    </div>
+
+    <!-- 订阅通知 -->
+    <div class="subscribe">
+        <h2>订阅我们</h2>
+        <p>留下邮箱，第一时间获取新品、优惠活动</p>
+        <input type="email" placeholder="请输入你的邮箱">
+        <button>订阅</button>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-item">
+            <h3>联系我们</h3>
+            <p>电话：123-456789</p>
+            <p>地址：美食街18号</p>
+        </div>
+        <div class="footer-item">
+            <h3>关于店铺</h3>
+            <ul>
+                <li><a href="#">品牌故事</a></li>
+                <li><a href="#">门店分布</a></li>
+                <li><a href="#">加入我们</a></li>
+            </ul>
+        </div>
+        <div class="footer-item">
+            <h3>服务支持</h3>
+            <ul>
+                <li><a href="#">点餐指南</a></li>
+                <li><a href="#">配送说明</a></li>
+                <li><a href="#">常见问题</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
